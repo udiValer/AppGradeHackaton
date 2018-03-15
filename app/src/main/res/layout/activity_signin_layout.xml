@@ -11,7 +11,7 @@
         android:paddingTop="64dp"
         android:paddingRight="148dp"
         android:paddingLeft="148dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/logo" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -95,7 +95,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/signInSignBtn"
         android:text="@string/btnSignIn"
-        android:layout_gravity="center"
-        android:paddingTop="24dp"/>
+        android:paddingTop="24dp"
+        android:paddingRight="60dp"
+        android:paddingLeft="60dp"/>
 
 </LinearLayout>
