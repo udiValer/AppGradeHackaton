@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/fullScreen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/feedLayout"
+        tools:background="@android:color/darker_gray"
+        android:layout_above="@+id/txtMessageLayout"
+        >
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/txtMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="42dp"
+            android:layout_alignRight="@+id/currentPostEditText"
+            />
+
+        <EditText
+            tools:text="הודעה"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:id="@+id/currentPostEditText"
+            android:text="הודעה"
+            android:fontFamily="@font/heebo"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

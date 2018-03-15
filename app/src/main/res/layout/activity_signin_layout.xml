@@ -3,50 +3,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layoutDirection="rtl">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="64dp"
-        android:paddingRight="148dp"
-        android:paddingLeft="148dp"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="148dp"
+        android:layout_marginLeft="148dp"
+        android:src="@drawable/logo" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingRight="60dp"
-        android:paddingLeft="60dp">
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp">
 
         <android.support.design.widget.TextInputEditText
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
             android:id="@+id/signInFirstNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:fontFamily="@font/heebo"
             android:hint="@string/firstNameHint"
             android:inputType="text"
-            android:textDirection="rtl"
-            android:layoutDirection="rtl"
-            android:layout_gravity="end"
-            android:paddingRight="8dp"/>
+            android:paddingRight="8dp"
+            android:textDirection="rtl" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingRight="60dp"
-        android:paddingLeft="60dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp">
 
         <android.support.design.widget.TextInputEditText
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/signInLastNameTxt"
             android:hint="@string/lastNameHint"
             android:inputType="text"
-            android:textDirection="rtl"
             android:layoutDirection="rtl"
             android:layout_gravity="end"/>
 
@@ -55,47 +55,47 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingRight="60dp"
-        android:paddingLeft="60dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp">
 
         <android.support.design.widget.TextInputEditText
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
             android:id="@+id/signInEmailTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:fontFamily="@font/heebo"
             android:hint="@string/emailHint"
-            android:inputType="textEmailAddress"
-            android:textDirection="rtl"
-            android:layoutDirection="rtl"
-            android:layout_gravity="end"/>
+            android:inputType="textEmailAddress" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingRight="60dp"
-        android:paddingLeft="60dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp">
 
         <android.support.design.widget.TextInputEditText
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
             android:id="@+id/signInPasswordTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:fontFamily="@font/heebo"
             android:hint="@string/passwordHint"
-            android:inputType="textPassword"
-            android:textDirection="rtl"
-            android:layoutDirection="rtl"
-            android:layout_gravity="end"/>
+            android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
         android:id="@+id/signInSignBtn"
-        android:text="@string/btnSignIn"
-        android:layout_gravity="center"
-        android:paddingTop="24dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/heebo"
+        android:text="@string/btnSignIn" />
 
 </LinearLayout>
