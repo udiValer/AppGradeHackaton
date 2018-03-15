@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">AppGradeHackaton</string>
+
+    <!-- LoginPage Strings -->
+    <string name="firstNameHint">שם פרטי</string>
+    <string name="btnSignIn">הירשם</string>
+    <string name="lastNameHint">שם משפחה</string>
+    <string name="emailHint">דואר אלקטרוני</string>
+    <string name="passwordHint">סיסמא</string>
+
+    <!-- LoginPage Errors -->
+    <string name="NameIsNotValid">שם המשתמש לא יכול להיות ריק או להכיל מספרים</string>
+    <string name="EmailNotValid">דואר אלקטרוני לא חוקי</string>
+    <string name="PasswordTooShort">הסיסמא חייבת להכיל מעל 5 תווים</string>
+
 </resources>
