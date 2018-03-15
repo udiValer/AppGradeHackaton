@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layoutDirection="rtl">
 
     <ImageView
         android:layout_width="match_parent"
@@ -28,7 +29,6 @@
             android:fontFamily="@font/heebo"
             android:hint="@string/firstNameHint"
             android:inputType="text"
-            android:layoutDirection="rtl"
             android:paddingRight="8dp"
             android:textDirection="rtl" />
 
@@ -47,7 +47,6 @@
             android:id="@+id/signInLastNameTxt"
             android:hint="@string/lastNameHint"
             android:inputType="text"
-            android:textDirection="rtl"
             android:layoutDirection="rtl"
             android:layout_gravity="end"/>
 
@@ -67,9 +66,7 @@
             android:layout_gravity="end"
             android:fontFamily="@font/heebo"
             android:hint="@string/emailHint"
-            android:inputType="textEmailAddress"
-            android:layoutDirection="rtl"
-            android:textDirection="rtl" />
+            android:inputType="textEmailAddress" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -87,9 +84,7 @@
             android:layout_gravity="end"
             android:fontFamily="@font/heebo"
             android:hint="@string/passwordHint"
-            android:inputType="textPassword"
-            android:layoutDirection="rtl"
-            android:textDirection="rtl" />
+            android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
 

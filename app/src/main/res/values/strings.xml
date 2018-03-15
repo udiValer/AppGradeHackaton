@@ -13,4 +13,9 @@
     <string name="EmailNotValid">דואר אלקטרוני לא חוקי</string>
     <string name="PasswordTooShort">הסיסמא חייבת להכיל מעל 5 תווים</string>
 
+    <!-- Add course activity -->
+    <string name="addCourseToolTipTxt">הוספת קורס</string>
+    <string name="next">הבא</string>
+    <string name="back">חזור</string>
+
 </resources>

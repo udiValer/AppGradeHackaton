@@ -2,6 +2,7 @@ package com.androidacademyhackaton.appgradehackaton.View;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -12,7 +13,7 @@ import com.androidacademyhackaton.appgradehackaton.R;
  * Created by Udi on 3/15/2018.
  */
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends Activity{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,4 +28,5 @@ public class SplashScreenActivity extends Activity {
             startActivity(new Intent(SplashScreenActivity.this , SignInActivity.class));
         }
     }
+
 }
