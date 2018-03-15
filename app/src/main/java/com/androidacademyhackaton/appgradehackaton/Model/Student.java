@@ -17,25 +17,25 @@ public class Student {
 
     public String firstName;
     public String lastName;
+    public String email;
     public Gender gender;
     public int age;
-    public List<String> locationIds;
+    public List<String> geoAreaIds;
     public List<String> curriculumIds;
     public String about;
     public String photoUrl;
-    public String userId;
 
     public Student(){}
 
-    public Student(String firstName, String lastName, String userId){
+    public Student(String firstName, String lastName, String email){
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.gender = UNDEFINED;
         this.age = 0;
-        this.locationIds = new ArrayList<>();
+        this.geoAreaIds = new ArrayList<>();
         this.curriculumIds = new ArrayList<>();
         this.about = "";
         this.photoUrl = "";
-        this.userId = userId;
     }
 }
