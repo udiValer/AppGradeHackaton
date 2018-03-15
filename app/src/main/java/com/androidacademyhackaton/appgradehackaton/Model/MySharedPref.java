@@ -1,12 +1,7 @@
 package com.androidacademyhackaton.appgradehackaton.Database;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.androidacademyhackaton.appgradehackaton.Utils.Gender;
-
-import java.util.Set;
 
 /**
  * Created by Udi on 3/15/2018.
@@ -17,7 +12,8 @@ public final class MySharedPref {
     private static SharedPreferences sharedPref;
     private static SharedPreferences.Editor editor;
 
-    private static final String USER_ID = "userId";
+    private static final String EMAIL = "email";
+    private static final String PASSWORD = "password";
     private static final String PREF_NAME = "AppGradePref";
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
@@ -33,14 +29,26 @@ public final class MySharedPref {
         editor = sharedPref.edit();
     }
 
-    public void setUserId(String id) {
-        editor.putString(USER_ID, id);
+    public void setEmail(String email) {
+        editor.putString(EMAIL, email);
         editor.apply();
     }
 
     public String getUserId() {
-        if (sharedPref.contains(USER_ID)) {
-            return sharedPref.getString(USER_ID, "");
+        if (sharedPref.contains(EMAIL)) {
+            return sharedPref.getString(EMAIL, "");
+        }
+        return "";
+    }
+
+    public void setPassword(String pass) {
+        editor.putString(PASSWORD, pass);
+        editor.apply();
+    }
+
+    public String getPassword() {
+        if (sharedPref.contains(PASSWORD)) {
+            return sharedPref.getString(PASSWORD, "");
         }
         return "";
     }

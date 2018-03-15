@@ -8,10 +8,94 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
+        android:paddingTop="64dp"
+        android:paddingRight="148dp"
+        android:paddingLeft="148dp"
+        android:src="@mipmap/ic_launcher" />
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sign in activity"/>
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingRight="60dp"
+        android:paddingLeft="60dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signInFirstNameTxt"
+            android:hint="@string/firstNameHint"
+            android:inputType="text"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:layout_gravity="end"
+            android:paddingRight="8dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingRight="60dp"
+        android:paddingLeft="60dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signInLastNameTxt"
+            android:hint="@string/lastNameHint"
+            android:inputType="text"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:layout_gravity="end"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingRight="60dp"
+        android:paddingLeft="60dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signInEmailTxt"
+            android:hint="@string/emailHint"
+            android:inputType="textEmailAddress"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:layout_gravity="end"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingRight="60dp"
+        android:paddingLeft="60dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/signInPasswordTxt"
+            android:hint="@string/passwordHint"
+            android:inputType="textPassword"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:layout_gravity="end"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/signInSignBtn"
+        android:text="@string/btnSignIn"
+        android:layout_gravity="center"
+        android:paddingTop="24dp"/>
+
 </LinearLayout>
