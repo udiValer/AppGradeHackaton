@@ -1,4 +1,4 @@
-package com.androidacademyhackaton.appgradehackaton.Model;
+package com.androidacademyhackaton.appgradehackaton.Database;
 
 import android.app.Application;
 import android.content.Context;
