@@ -1,4 +1,4 @@
-package com.androidacademyhackaton.appgradehackaton.Database;
+package com.androidacademyhackaton.appgradehackaton.Model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
