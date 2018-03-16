@@ -12,4 +12,19 @@ public class GeoArea {
         this.title = title;
     }
 
+    @Override
+    public boolean equals(Object object){
+        if (this == object) {
+            return true;
+        }
+        if (object == null) {
+            return false;
+        }
+        if(!(object instanceof GeoArea)){
+            return false;
+        }
+        GeoArea geoArea = (GeoArea) object;
+        return title.equals(geoArea.title);
+    }
+
 }

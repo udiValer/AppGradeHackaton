@@ -11,4 +11,20 @@ public class Curriculum {
     public Curriculum(String title){
         this.title = title;
     }
+
+    @Override
+    public boolean equals(Object object){
+        if (this == object) {
+            return true;
+        }
+        if (object == null) {
+            return false;
+        }
+        if(!(object instanceof Curriculum)){
+            return false;
+        }
+        Curriculum curriculum = (Curriculum) object;
+        return title.equals(curriculum.title);
+    }
+
 }
