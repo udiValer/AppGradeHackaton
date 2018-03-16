@@ -56,7 +56,8 @@ public class SignUpActivity extends Activity {
                                      Student student = (Student)data;
                                      if(student == null){
                                          //TODO: Set error message. For now Toast
-                                         Toast.makeText(SignUpActivity.this , "Sign Up Failed!" , Toast.LENGTH_LONG).show();
+                                         progressDialog.cancel();
+                                         Toast.makeText(SignUpActivity.this , R.string.signUpFailed , Toast.LENGTH_LONG).show();
                                      }
                                      else {
                                          writeStudentToSharedPref(student);

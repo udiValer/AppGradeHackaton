@@ -4,22 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/primary"
     android:layoutDirection="rtl">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="148dp"
-        android:layout_marginLeft="148dp"
-        android:src="@drawable/logo" />
+        android:layout_marginTop="74dp"
+        android:layout_marginRight="155dp"
+        android:layout_marginLeft="155dp"
+        android:src="@drawable/appgrade_sign_in" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="20dp">
+        android:textColorHint="@color/secondry_light"
+        >
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/signInFirstNameTxt"
@@ -29,17 +31,19 @@
             android:fontFamily="@font/heebo"
             android:hint="@string/firstNameHint"
             android:inputType="text"
+            android:layout_marginTop="50dp"
             android:paddingRight="8dp"
-            android:textDirection="rtl" />
+            android:textDirection="rtl"
+            android:backgroundTint="@color/secondry_light"/>
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp">
+        android:layout_marginLeft="60dp"
+        android:textColorHint="@color/secondry_light">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
@@ -47,44 +51,50 @@
             android:id="@+id/signInLastNameTxt"
             android:hint="@string/lastNameHint"
             android:inputType="text"
+            android:layout_marginTop="36dp"
             android:layoutDirection="rtl"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:backgroundTint="@color/secondry_light"/>
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp">
+        android:layout_marginLeft="60dp"
+        android:textColorHint="@color/secondry_light">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/signInEmailTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/heebo"
             android:hint="@string/emailHint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:backgroundTint="@color/secondry_light"/>
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp">
+        android:layout_marginLeft="60dp"
+        android:textColorHint="@color/secondry_light">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/signInPasswordTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/heebo"
             android:hint="@string/passwordHint"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:backgroundTint="@color/secondry_light"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -96,6 +106,8 @@
         android:layout_marginRight="60dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/heebo"
-        android:text="@string/btnSignIn" />
+        android:text="@string/btnSignIn"
+        android:textColor="@color/secondry_light"
+        android:background="@color/primary_light"/>
 
 </LinearLayout>

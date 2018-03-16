@@ -22,23 +22,28 @@ public class SplashScreenActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen_layout);
 
-        MySharedPref mySharedPref = new MySharedPref((getApplicationContext()));
-        if(!(mySharedPref.getEmail().equals(""))){
-            AppGradeDatabase database = new AppGradeDatabase(SplashScreenActivity.this);
-            database.signIn(mySharedPref.getEmail(), mySharedPref.getPassword() , new AppGradeDatabase.OnResultCallback() {
-                @Override
-                public void callback(Object data) {
-                    Student student = (Student)data;
-                    Intent intent = new Intent(SplashScreenActivity.this , DashboardActivity.class);
-                    intent.putExtra("Student" , student);
+//        MySharedPref mySharedPref = new MySharedPref((getApplicationContext()));
+//        if(!(mySharedPref.getEmail().equals(""))){
+//            AppGradeDatabase database = new AppGradeDatabase(SplashScreenActivity.this);
+//            database.signIn(mySharedPref.getEmail(), mySharedPref.getPassword() , new AppGradeDatabase.OnResultCallback() {
+//                @Override
+//                public void callback(Object data) {
+//                    navigateToNextScreen(data);
+//                }
+//            });
+//        }
+//        else {
+//            startActivity(new Intent(SplashScreenActivity.this , SignUpActivity.class));
+//        }
+    }
 
-                }
-            });
-            startActivity(new Intent(SplashScreenActivity.this , DashboardActivity.class));
-        }
-        else {
-            startActivity(new Intent(SplashScreenActivity.this , SignUpActivity.class));
-        }
+    private void navigateToNextScreen(Object data) {
+        Student student = (Student)data;
+        //Intent intent = new Intent(SplashScreenActivity.this , DashboardActivity.class);
+        // TODO: uncomment the dashboared navigation. Do it now only for Debug
+        Intent intent = new Intent(SplashScreenActivity.this , AddCourseActivity.class);
+        intent.putExtra("Student" , student);
+        startActivity(intent);
     }
 
 }

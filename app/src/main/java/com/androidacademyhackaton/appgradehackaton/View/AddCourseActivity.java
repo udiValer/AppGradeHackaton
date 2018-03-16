@@ -11,7 +11,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import com.androidacademyhackaton.appgradehackaton.Model.Course;
+import com.androidacademyhackaton.appgradehackaton.Presenter.CourseFragment;
 import com.androidacademyhackaton.appgradehackaton.Presenter.LocationFragment;
+import com.androidacademyhackaton.appgradehackaton.Presenter.SemesterFragment;
 import com.androidacademyhackaton.appgradehackaton.R;
 
 /**
@@ -44,9 +47,9 @@ public class AddCourseActivity extends FragmentActivity {
                 case 0:
                     return LocationFragment.newInstance("FirstFragment" , "Instance 1");
                 case 1:
-                    return LocationFragment.newInstance("FirstFragment" , "Instance 1");
+                    return CourseFragment.newInstance("CourseFragment" , "Instance 2");
                 default:
-                    return LocationFragment.newInstance("FirstFragment" , "Instance 1");
+                    return SemesterFragment.newInstance("ThirdFragment" , "Instance 1");
             }
         }
 
