@@ -18,14 +18,14 @@
         android:layout_height="wrap_content"
         android:textColorHint="@color/secondry_light">
 
-        <android.support.design.widget.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/locationEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="120dp"
             android:fontFamily="@font/heebo"
-            android:textColor="@color/secondry_light"
+            android:textColor="@color/black"
             android:hint="@string/fragmentLocationHint"
             android:inputType="text"
             android:layout_marginRight="60dp"
@@ -33,7 +33,6 @@
             android:backgroundTint="@color/primary_light"
             android:textColorHint="@color/secondry_dark"
             android:textColorHighlight="@color/black"
-
             />
 
         </android.support.design.widget.TextInputLayout>

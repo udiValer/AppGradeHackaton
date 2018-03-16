@@ -77,11 +77,15 @@ public class LocationFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_location , container , false);
 
-        final TextInputEditText location = view.findViewById(R.id.locationEditText);
-        String[] arr = { "Paries,France", "PA,United States","Parana,Brazil",
+        final AutoCompleteTextView location = view.findViewById(R.id.locationEditText);
+        String[] arr = { "אילת", "PA,United States","Parana,Brazil",
                 "Padua,Italy", "Pasadena,CA,United States"};
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (getActivity(),android.R.layout.select_dialog_item, arr);
 
+        location.setThreshold(0);
+        location.setAdapter(adapter);
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

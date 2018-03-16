@@ -38,7 +38,7 @@ public class AddCourseActivity extends FragmentActivity implements CourseFragmen
 
         btnNext = findViewById(R.id.addCourseNextBtn);
         btnBack = findViewById(R.id.addCourseBackBtn);
-        viewPager = (ViewPager) findViewById(R.id.addCourseViewPager);
+        viewPager = findViewById(R.id.addCourseViewPager);
         final AddCourseViewPagerAdapter adapter = new AddCourseViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(2);
@@ -67,13 +67,15 @@ public class AddCourseActivity extends FragmentActivity implements CourseFragmen
             public void onClick(View view) {
                 switch (viewPager.getCurrentItem()) {
                     case 2:
-                        btnBack.setEnabled(false);
+                        btnNext.setEnabled(true);
                         break;
                     case 1:
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                        btnBack.setEnabled(false);
                         break;
                     case 0:
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                        btnNext.setText("המשך");
                         break;
                 }
             }
