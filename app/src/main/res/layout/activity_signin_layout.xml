@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="74dp"
-        android:layout_marginRight="155dp"
-        android:layout_marginLeft="155dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginLeft="130dp"
         android:src="@drawable/appgrade_sign_in" />
 
     <android.support.design.widget.TextInputLayout
@@ -30,6 +30,7 @@
             android:layout_gravity="end"
             android:fontFamily="@font/heebo"
             android:hint="@string/firstNameHint"
+            android:textColor="@color/secondry_light"
             android:inputType="text"
             android:layout_marginTop="50dp"
             android:paddingRight="8dp"
@@ -53,6 +54,7 @@
             android:inputType="text"
             android:layout_marginTop="36dp"
             android:layoutDirection="rtl"
+            android:textColor="@color/secondry_light"
             android:layout_gravity="end"
             android:backgroundTint="@color/secondry_light"/>
 
@@ -72,6 +74,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/heebo"
+            android:textColor="@color/secondry_light"
             android:hint="@string/emailHint"
             android:inputType="textEmailAddress"
             android:backgroundTint="@color/secondry_light"/>
@@ -92,6 +95,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/heebo"
+            android:textColor="@color/secondry_light"
             android:hint="@string/passwordHint"
             android:inputType="textPassword"
             android:backgroundTint="@color/secondry_light"/>

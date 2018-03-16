@@ -3,12 +3,17 @@ package com.androidacademyhackaton.appgradehackaton.Presenter;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.androidacademyhackaton.appgradehackaton.R;
 import com.androidacademyhackaton.appgradehackaton.View.AddCourseActivity;
@@ -72,14 +77,19 @@ public class LocationFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_location , container , false);
 
-        Spinner spinner = view.findViewById(R.id.locationSpinner);
-        ArrayList<String> relevantLocations = new ArrayList<>();
-        relevantLocations.add("צפון");
-        relevantLocations.add("דרום");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item , relevantLocations);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapter);
-        return inflater.inflate(R.layout.fragment_location, container, false);
+        final TextInputEditText location = view.findViewById(R.id.locationEditText);
+        String[] arr = { "Paries,France", "PA,United States","Parana,Brazil",
+                "Padua,Italy", "Pasadena,CA,United States"};
+
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //location.setFocusable(true);
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

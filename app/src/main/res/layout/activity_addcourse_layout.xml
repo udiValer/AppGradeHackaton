@@ -18,13 +18,14 @@
             android:layout_height="28dp"
             android:textColor="@color/secondry"
             android:text="@string/addCourseToolTipTxt"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:layout_marginRight="60dp"/>
 
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:id="@+id/addCourseBottomNav"
         android:background="@color/secondry"
         android:layout_alignParentBottom="true">
@@ -32,8 +33,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/addCourseNextBtn"
             android:text="@string/next"
-            android:textSize="16dp"
+            android:textSize="14sp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="14dp"
@@ -42,16 +44,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/addCourseBackBtn"
             android:text="@string/back"
-            android:textSize="16dp"
+            android:textSize="14sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"/>
+            android:layout_marginBottom="14dp"
+            android:enabled="false"/>
 
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <com.androidacademyhackaton.appgradehackaton.Presenter.NonSwipeableViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addCourseViewPager"
@@ -59,7 +63,7 @@
         android:layout_above="@id/addCourseBottomNav"
         >
 
-    </android.support.v4.view.ViewPager>
+    </com.androidacademyhackaton.appgradehackaton.Presenter.NonSwipeableViewPager>
 
 
 

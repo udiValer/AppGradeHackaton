@@ -4,9 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.androidacademyhackaton.appgradehackaton.R;
 
@@ -64,16 +68,75 @@ public class SemesterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_semester, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_semester , container , false);
+
+        InitializeButtonsActions(view);
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    private void InitializeButtonsActions(View view) {
+
+        final ImageView rightCircleYear = view.findViewById(R.id.fragmentSemesterRightCircleYear);
+        final ImageView leftCircleYear = view.findViewById(R.id.fragmentSemesterLeftCircleYear);
+
+        final ImageView rightCircleSemester = view.findViewById(R.id.fragmentSemesterRightCircleSemester);
+        final ImageView centerCircleSemester = view.findViewById(R.id.fragmentSemesterCenterCircleSemester);
+        final ImageView leftCircleSemester = view.findViewById(R.id.fragmentSemesterLeftCircleSemester);
+
+        final TextView txtYear = view.findViewById(R.id.fragmentSemesterYearEditText);
+        final TextView txtSemester = view.findViewById(R.id.fragmentSemesterSemesterEditText);
+
+        rightCircleYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rightCircleYear.setSelected(true);
+                leftCircleYear.setSelected(false);
+                txtYear.setText("2018");
+            }
+        });
+
+        leftCircleYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                leftCircleYear.setSelected(true);
+                rightCircleYear.setSelected(false);
+                txtYear.setText("2019");
+            }
+        });
+
+        rightCircleSemester.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rightCircleSemester.setSelected(true);
+                centerCircleSemester.setSelected(false);
+                leftCircleSemester.setSelected(false);
+                txtSemester.setText("א");
+            }
+        });
+
+        centerCircleSemester.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rightCircleSemester.setSelected(false);
+                centerCircleSemester.setSelected(true);
+                leftCircleSemester.setSelected(false);
+                txtSemester.setText("ב");
+            }
+        });
+
+        leftCircleSemester.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rightCircleSemester.setSelected(false);
+                centerCircleSemester.setSelected(false);
+                leftCircleSemester.setSelected(true);
+                txtSemester.setText("ג");
+            }
+        });
     }
+
 
     @Override
     public void onAttach(Context context) {

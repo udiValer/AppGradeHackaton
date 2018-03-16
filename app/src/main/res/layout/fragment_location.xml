@@ -1,35 +1,55 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    tools:context="com.androidacademyhackaton.appgradehackaton.Presenter.LocationFragment">
+    tools:context="com.androidacademyhackaton.appgradehackaton.Presenter.LocationFragment"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:layout_marginTop="120dp">
 
-        <Spinner
-            android:layout_width="240dp"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/secondry_light">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/locationEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/locationSpinner"
-            android:layout_marginTop="200dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="120dp"
+            android:fontFamily="@font/heebo"
+            android:textColor="@color/secondry_light"
+            android:hint="@string/fragmentLocationHint"
+            android:inputType="text"
             android:layout_marginRight="60dp"
-            >
+            android:layout_marginLeft="60dp"
+            android:backgroundTint="@color/primary_light"
+            android:textColorHint="@color/secondry_dark"
+            android:textColorHighlight="@color/black"
 
-        </Spinner>
+            />
+
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/locationDescription"
-            android:textSize="8sp"
+            android:textSize="10sp"
             android:layout_marginRight="60dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/secondry_dark"
+
             />
 
     </LinearLayout>
 
 
-</FrameLayout>
+</RelativeLayout>
