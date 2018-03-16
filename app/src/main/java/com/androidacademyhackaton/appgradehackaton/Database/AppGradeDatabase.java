@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.androidacademyhackaton.appgradehackaton.Model.Course;
+import com.androidacademyhackaton.appgradehackaton.Model.Curriculum;
+import com.androidacademyhackaton.appgradehackaton.Model.GeoArea;
 import com.androidacademyhackaton.appgradehackaton.Model.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -13,6 +16,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppGradeDatabase{
 
@@ -86,4 +92,39 @@ public class AppGradeDatabase{
             }
         });
     }
+
+    public void getCurriculums(final OnResultCallback onResultCallback){
+        mDatabase.child("curriculums").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Curriculum> curriculums = new ArrayList<>();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    curriculums.add(snapshot.getValue(Curriculum.class));
+                }
+                onResultCallback.callback(curriculums);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                onResultCallback.callback(null);
+            }
+        });
+    }
+
+    public void getGeoAreas(final OnResultCallback onResultCallback){
+        mDatabase.child("geoAreas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<GeoArea> geoAreas = new ArrayList<>();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    geoAreas.add(snapshot.getValue(GeoArea.class));
+                }
+                onResultCallback.callback(geoAreas);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                onResultCallback.callback(null);
+            }
+        });
+    }
+
 }
