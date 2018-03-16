@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/toolBar"
         android:background="@color/toolBar"
+        android:layout_alignParentTop="true"
         >
 
         <TextView
@@ -21,32 +22,46 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/addCourseBottomNav"
+        android:background="@color/grey"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textSize="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textSize="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"/>
+
+    </RelativeLayout>
+
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/viewPager"
-        android:layout_below="@id/toolBar">
+        android:id="@+id/addCourseViewPager"
+        android:layout_below="@id/toolBar"
+        android:layout_above="@id/addCourseBottomNav"
+        >
 
     </android.support.v4.view.ViewPager>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:id="@+id/view"
-        android:background="@color/grey"
-        android:layout_below="@+id/viewPager" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back"/>
-
-    </View>
 
 
 </RelativeLayout>

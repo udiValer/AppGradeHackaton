@@ -34,7 +34,7 @@ public final class MySharedPref {
         editor.apply();
     }
 
-    public String getUserId() {
+    public String getEmail() {
         if (sharedPref.contains(EMAIL)) {
             return sharedPref.getString(EMAIL, "");
         }
