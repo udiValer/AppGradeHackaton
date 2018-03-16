@@ -23,8 +23,13 @@ public class Curriculum {
         if(!(object instanceof Curriculum)){
             return false;
         }
+
         Curriculum curriculum = (Curriculum) object;
         return title.equals(curriculum.title);
+    }
+
+    public String getTitle() {
+        return title;
     }
 
 }

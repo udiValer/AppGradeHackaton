@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.androidacademyhackaton.appgradehackaton.Database.AppGradeDatabase;
+import com.androidacademyhackaton.appgradehackaton.Model.Curriculum;
 import com.androidacademyhackaton.appgradehackaton.R;
 
 import java.util.ArrayList;
@@ -70,13 +72,26 @@ public class CourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course , container , false);
 
-        Spinner spinnerForCurriculum = view.findViewById(R.id.courseFragmentCurriculumSpinner);
-        ArrayList<String> relevantLocations = new ArrayList<>();
-        relevantLocations.add("כלכלה");
-        relevantLocations.add("מדעי המחשב");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item , relevantLocations);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinnerForCurriculum.setAdapter(adapter);
+        final Spinner spinnerForCurriculum = view.findViewById(R.id.courseFragmentCurriculumSpinner);
+
+        AppGradeDatabase database = new AppGradeDatabase(getActivity());
+        database.getCurriculums(new AppGradeDatabase.OnResultCallback() {
+            @Override
+            public void callback(Object data) {
+                ArrayList<Curriculum> curriculms = (ArrayList<Curriculum>)data;
+                ArrayList<String> curriclumsTitles = new ArrayList<>();
+
+                for (Curriculum curCuriculum : curriculms) {
+                    curriclumsTitles.add(curCuriculum.getTitle());
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item , curriclumsTitles);
+                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                spinnerForCurriculum.setAdapter(adapter);
+            }
+        });
+
+        //spinnerForCurriculum.setOnItemClickListener(new );
 
         return view;
     }

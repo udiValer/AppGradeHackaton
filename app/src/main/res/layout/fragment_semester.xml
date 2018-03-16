@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/secondry_light"
     android:layoutDirection="rtl">
 
     <LinearLayout
@@ -17,7 +18,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="120dp"
         android:hint="@string/yearEditTxtDefault"
-        android:textColor="@color/secondry_dark"
+        android:textColor="@color/black"
         android:enabled="false"
         android:textColorHint="@color/secondry_light"/>
 
@@ -53,7 +54,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="48dp"
         android:hint="@string/semesterDefaultEditText"
-        android:textColor="@color/secondry_dark"
+        android:textColor="@color/black"
         android:textColorHint="@color/secondry_light"
         android:enabled="false"
         />

@@ -27,4 +27,8 @@ public class GeoArea {
         return title.equals(geoArea.title);
     }
 
+    public String getTitle() {
+        return title;
+    }
+
 }

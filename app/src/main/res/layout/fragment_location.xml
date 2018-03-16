@@ -16,7 +16,7 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/secondry_light">
+        android:textColorHint="@color/black">
 
         <AutoCompleteTextView
             android:id="@+id/locationEditText"

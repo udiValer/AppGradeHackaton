@@ -15,10 +15,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.androidacademyhackaton.appgradehackaton.Database.AppGradeDatabase;
+import com.androidacademyhackaton.appgradehackaton.Model.GeoArea;
 import com.androidacademyhackaton.appgradehackaton.R;
 import com.androidacademyhackaton.appgradehackaton.View.AddCourseActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,21 +78,27 @@ public class LocationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        ArrayList<GeoArea> locations = new ArrayList<GeoArea>();
         View view = inflater.inflate(R.layout.fragment_location , container , false);
 
         final AutoCompleteTextView location = view.findViewById(R.id.locationEditText);
-        String[] arr = { "אילת", "PA,United States","Parana,Brazil",
-                "Padua,Italy", "Pasadena,CA,United States"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (getActivity(),android.R.layout.select_dialog_item, arr);
-
-        location.setThreshold(0);
-        location.setAdapter(adapter);
-        location.setOnClickListener(new View.OnClickListener() {
+        AppGradeDatabase database = new AppGradeDatabase(getActivity());
+        database.getGeoAreas(new AppGradeDatabase.OnResultCallback() {
             @Override
-            public void onClick(View view) {
-                //location.setFocusable(true);
+            public void callback(Object data) {
+                ArrayList<GeoArea> locationsFromDb = (ArrayList<GeoArea>)data;
+                String[] areas = new String[locationsFromDb.size()];
+
+                for(int i=0 ; i < locationsFromDb.size() ; i++){
+                    areas[i] =locationsFromDb.get(i).getTitle();
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                        (getActivity(),android.R.layout.select_dialog_item, areas);
+                location.setThreshold(0);
+                location.setAdapter(adapter);
+
             }
         });
 
