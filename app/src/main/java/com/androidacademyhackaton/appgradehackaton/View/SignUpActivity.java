@@ -1,13 +1,18 @@
 package com.androidacademyhackaton.appgradehackaton.View;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
+import com.androidacademyhackaton.appgradehackaton.Database.AppGradeDatabase;
+import com.androidacademyhackaton.appgradehackaton.Model.MySharedPref;
+import com.androidacademyhackaton.appgradehackaton.Model.Student;
 import com.androidacademyhackaton.appgradehackaton.R;
 
 import java.util.regex.Matcher;
@@ -17,8 +22,10 @@ import java.util.regex.Pattern;
  * Created by Udi on 3/15/2018.
  */
 
-public class SignInActivity extends Activity {
+public class SignUpActivity extends Activity {
 
+    private AppGradeDatabase database;
+    private ProgressDialog progressDialog;
     private TextInputEditText txtFirstName;
     private TextInputEditText txtLastName;
     private TextInputEditText txtEmail;
@@ -40,7 +47,24 @@ public class SignInActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if(validateInputs()){
-
+                     showProcessDialog();
+                     database = new AppGradeDatabase(SignUpActivity.this);
+                     database.signUp(txtFirstName.getText().toString(), txtLastName.getText().toString(),
+                             txtEmail.getText().toString(), txtPassword.getText().toString(), new AppGradeDatabase.OnResultCallback() {
+                                 @Override
+                                 public void callback(Object data) {
+                                     Student student = (Student)data;
+                                     if(student == null){
+                                         //TODO: Set error message. For now Toast
+                                         Toast.makeText(SignUpActivity.this , "Sign Up Failed!" , Toast.LENGTH_LONG).show();
+                                     }
+                                     else {
+                                         writeStudentToSharedPref(student);
+                                         progressDialog.cancel();
+                                         startActivity(new Intent(SignUpActivity.this , AddCourseActivity.class));
+                                     }
+                                 }
+                             });
                 }
             }
         });
@@ -82,10 +106,23 @@ public class SignInActivity extends Activity {
     }
 
     private boolean isValidPassword(String pass) {
-        if (pass != null && pass.length() > 6) {
+        if (pass != null && pass.length() >= 6) {
             return true;
         }
         return false;
     }
+
+    private void showProcessDialog(){
+        progressDialog = ProgressDialog.show(SignUpActivity.this , "AppGrade" , "מבצע הרשמה...");
+    }
+
+    private void writeStudentToSharedPref(Student student){
+        MySharedPref mySharedPref = new MySharedPref(getApplicationContext());
+        mySharedPref.setFirstName(student.firstName);
+        mySharedPref.setLastName(student.lastName);
+        mySharedPref.setEmail(student.email);
+        mySharedPref.setPassword(txtPassword.getText().toString());
+    }
+
 
 }

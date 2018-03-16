@@ -2,12 +2,14 @@ package com.androidacademyhackaton.appgradehackaton.View;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.androidacademyhackaton.appgradehackaton.Database.AppGradeDatabase;
 import com.androidacademyhackaton.appgradehackaton.Model.MySharedPref;
+import com.androidacademyhackaton.appgradehackaton.Model.Student;
 import com.androidacademyhackaton.appgradehackaton.R;
+import com.google.firebase.database.DataSnapshot;
 
 /**
  * Created by Udi on 3/15/2018.
@@ -21,11 +23,21 @@ public class SplashScreenActivity extends Activity{
         setContentView(R.layout.activity_splashscreen_layout);
 
         MySharedPref mySharedPref = new MySharedPref((getApplicationContext()));
-        if(!(mySharedPref.getUserId().equals(""))){
-            startActivity(new Intent(SplashScreenActivity.this , SignInActivity.class));
+        if(!(mySharedPref.getEmail().equals(""))){
+            AppGradeDatabase database = new AppGradeDatabase(SplashScreenActivity.this);
+            database.signIn(mySharedPref.getEmail(), mySharedPref.getPassword() , new AppGradeDatabase.OnResultCallback() {
+                @Override
+                public void callback(Object data) {
+                    Student student = (Student)data;
+                    Intent intent = new Intent(SplashScreenActivity.this , DashboardActivity.class);
+                    intent.putExtra("Student" , student);
+
+                }
+            });
+            startActivity(new Intent(SplashScreenActivity.this , DashboardActivity.class));
         }
         else {
-            startActivity(new Intent(SplashScreenActivity.this , SignInActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this , SignUpActivity.class));
         }
     }
 

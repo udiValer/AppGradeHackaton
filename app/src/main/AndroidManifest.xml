@@ -23,7 +23,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.SignInActivity">
+        <activity android:name=".View.SignUpActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".View.AddCourseActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
