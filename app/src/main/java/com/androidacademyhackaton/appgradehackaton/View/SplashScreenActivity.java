@@ -33,7 +33,7 @@ public class SplashScreenActivity extends Activity{
             });
         }
         else {
-            startActivity(new Intent(SplashScreenActivity.this , SignUpActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this , AddCourseActivity.class));
         }
     }
 

@@ -21,9 +21,8 @@
 
     <!-- Fragments strings -->
     <string name="locationDescription">מיקומך מאפשר לנו למצוא סטונדטים נוספים בקרבתך</string>
-    <string name="semesterDefault">סמסטר א\'</string>
-    <string name="yearEditTxtDefault">שנת לימודים</string>
-    <string name="semesterDefaultEditText">סמסטר</string>
+    <string name="semesterHint">בחר סמסטר...</string>
+    <string name="yearEditTxtHint">בחר שנת לימודים...</string>
     <string name="fragmentLocationHint">בחר מיקום...</string>
 
 

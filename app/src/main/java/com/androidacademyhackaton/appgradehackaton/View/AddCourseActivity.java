@@ -1,9 +1,5 @@
 package com.androidacademyhackaton.appgradehackaton.View;
 
-import android.app.Activity;
-import android.location.Location;
-import android.location.LocationListener;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,10 +10,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.androidacademyhackaton.appgradehackaton.Model.Course;
+import com.androidacademyhackaton.appgradehackaton.FragmentsCallbacks;
 import com.androidacademyhackaton.appgradehackaton.Presenter.CourseFragment;
 import com.androidacademyhackaton.appgradehackaton.Presenter.LocationFragment;
-import com.androidacademyhackaton.appgradehackaton.Presenter.NonSwipeableViewPager;
 import com.androidacademyhackaton.appgradehackaton.Presenter.SemesterFragment;
 import com.androidacademyhackaton.appgradehackaton.R;
 
@@ -25,7 +20,7 @@ import com.androidacademyhackaton.appgradehackaton.R;
  * Created by Udi on 3/15/2018.
  */
 
-public class AddCourseActivity extends FragmentActivity implements CourseFragment.OnFragmentInteractionListener, SemesterFragment.OnFragmentInteractionListener, LocationFragment.OnFragmentInteractionListener{
+public class AddCourseActivity extends FragmentActivity implements FragmentsCallbacks {
 
     private ViewPager viewPager;
     private TextView btnNext;
@@ -48,12 +43,13 @@ public class AddCourseActivity extends FragmentActivity implements CourseFragmen
             public void onClick(View view) {
                 switch (viewPager.getCurrentItem()) {
                     case 2:
-                        btnBack.setEnabled(true);
                         viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
+                        btnBack.setEnabled(true);
+                        btnNext.setEnabled(false);
                         break;
                     case 1:
                         viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-                        btnNext.setText("מצא שותף");
+                        btnNext.setText("הוסף");
                         btnNext.setEnabled(false);
                         break;
                     case 0:
@@ -67,15 +63,16 @@ public class AddCourseActivity extends FragmentActivity implements CourseFragmen
             public void onClick(View view) {
                 switch (viewPager.getCurrentItem()) {
                     case 2:
-                        btnNext.setEnabled(true);
                         break;
                     case 1:
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                         btnBack.setEnabled(false);
+                        btnNext.setEnabled(true);
                         break;
                     case 0:
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                         btnNext.setText("המשך");
+                        btnNext.setEnabled(true);
                         break;
                 }
             }
@@ -83,8 +80,8 @@ public class AddCourseActivity extends FragmentActivity implements CourseFragmen
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onBtnNextNeedToEnable() {
+        this.btnNext.setEnabled(true);
     }
 
     private class AddCourseViewPagerAdapter extends FragmentPagerAdapter{
@@ -97,11 +94,11 @@ public class AddCourseActivity extends FragmentActivity implements CourseFragmen
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return SemesterFragment.newInstance("SemesterFragment" , "Instance 1");
+                    return LocationFragment.newInstance();
                 case 1:
-                    return CourseFragment.newInstance("CourseFragment" , "Instance 2");
+                    return CourseFragment.newInstance();
                 default:
-                    return LocationFragment.newInstance("LocationFragment" , "Instance 1");
+                    return SemesterFragment.newInstance();
 
             }
         }
