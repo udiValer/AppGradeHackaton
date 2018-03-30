@@ -7,9 +7,9 @@ import java.util.Objects;
 public class Course extends Object{
 
     public enum Semester{
-        SEMESTER_1,
-        SEMESTER_2,
-        SEMESTER_3
+        א,
+        ב,
+        ג
     }
 
     public String title;
@@ -37,6 +37,10 @@ public class Course extends Object{
         }
         Course course = (Course) object;
         return title.equals(course.title);
+    }
+
+    public String toString(){
+        return title;
     }
 
 }

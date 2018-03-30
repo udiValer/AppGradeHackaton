@@ -99,9 +99,32 @@ public class AppGradeDatabase{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<Curriculum> curriculums = new ArrayList<>();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    curriculums.add(snapshot.getValue(Curriculum.class));
+                    Curriculum curCurriculum = snapshot.getValue(Curriculum.class);
+                    curCurriculum.setFireBaseId(snapshot.getKey());
+                    curriculums.add(curCurriculum);
                 }
                 onResultCallback.callback(curriculums);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                onResultCallback.callback(null);
+            }
+        });
+    }
+
+    public void getRelevantCourses(final OnResultCallback onResultCallback , final Curriculum curriculum){
+        mDatabase.child("curriculums-courses").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Course> courses = new ArrayList<>();
+                for (DataSnapshot curriculumSnapshot: dataSnapshot.getChildren()) {
+                    if(curriculumSnapshot.getKey().equals(curriculum.getFireBaseId())){
+                        for (DataSnapshot coursesSnapshot : curriculumSnapshot.getChildren()){
+                            courses.add(coursesSnapshot.getValue(Course.class));
+                        }
+                    }
+                }
+                onResultCallback.callback(courses);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

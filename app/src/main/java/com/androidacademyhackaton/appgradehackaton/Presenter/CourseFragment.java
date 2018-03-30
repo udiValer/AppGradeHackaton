@@ -7,15 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.androidacademyhackaton.appgradehackaton.Database.AppGradeDatabase;
 import com.androidacademyhackaton.appgradehackaton.FragmentsCallbacks;
+import com.androidacademyhackaton.appgradehackaton.Model.Course;
 import com.androidacademyhackaton.appgradehackaton.Model.Curriculum;
 import com.androidacademyhackaton.appgradehackaton.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,28 +62,45 @@ public class CourseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_course , container , false);
 
         final Spinner spinnerForCurriculum = view.findViewById(R.id.courseFragmentCurriculumSpinner);
+        final Spinner spinnerForCourses = view.findViewById(R.id.courseFragmentCourseSpinner);
+        final AppGradeDatabase database = new AppGradeDatabase(getActivity());
 
-        AppGradeDatabase database = new AppGradeDatabase(getActivity());
         database.getCurriculums(new AppGradeDatabase.OnResultCallback() {
             @Override
             public void callback(Object data) {
                 ArrayList<Curriculum> curriculms = (ArrayList<Curriculum>)data;
-                ArrayList<String> curriclumsTitles = new ArrayList<>();
 
-                for (Curriculum curCuriculum : curriculms) {
-                    curriclumsTitles.add(curCuriculum.getTitle());
-                }
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item , curriclumsTitles);
+                ArrayAdapter<Curriculum> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item , curriculms);
                 adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                 spinnerForCurriculum.setAdapter(adapter);
             }
         });
 
-        //spinnerForCurriculum.setOnItemClickListener(new );
+        spinnerForCurriculum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                database.getRelevantCourses(new AppGradeDatabase.OnResultCallback() {
+                    @Override
+                    public void callback(Object data) {
+                        List<Course> relevantCourses = (ArrayList<Course>)data;
+
+                        ArrayAdapter<Course> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item , relevantCourses);
+                        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                        spinnerForCourses.setAdapter(adapter);
+                        mOnParentNeedToChange.onBtnNextNeedToEnable();
+                    }
+                } , (Curriculum)adapterView.getSelectedItem());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         return view;
     }

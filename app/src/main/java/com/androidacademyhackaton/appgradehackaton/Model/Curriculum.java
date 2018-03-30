@@ -4,11 +4,13 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Curriculum {
 
+    public String fireBaseId;
     public String title;
 
     public Curriculum(){}
 
-    public Curriculum(String title){
+    public Curriculum(String title)
+    {
         this.title = title;
     }
 
@@ -30,6 +32,22 @@ public class Curriculum {
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public String getFireBaseId(){
+        return this.fireBaseId;
+    }
+
+    public void setFireBaseId(String id){
+        this.fireBaseId = id;
+    }
+
+    public String toString(){
+        return this.title;
     }
 
 }
