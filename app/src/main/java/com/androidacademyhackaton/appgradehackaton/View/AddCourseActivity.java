@@ -1,5 +1,6 @@
 package com.androidacademyhackaton.appgradehackaton.View;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +11,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.androidacademyhackaton.appgradehackaton.Database.AppGradeDatabase;
 import com.androidacademyhackaton.appgradehackaton.FragmentsCallbacks;
+import com.androidacademyhackaton.appgradehackaton.Model.Student;
 import com.androidacademyhackaton.appgradehackaton.Presenter.CourseFragment;
 import com.androidacademyhackaton.appgradehackaton.Presenter.LocationFragment;
 import com.androidacademyhackaton.appgradehackaton.Presenter.SemesterFragment;
@@ -22,6 +25,11 @@ import com.androidacademyhackaton.appgradehackaton.R;
 
 public class AddCourseActivity extends FragmentActivity implements FragmentsCallbacks {
 
+    public String year;
+    public String semester;
+    public String curriculum;
+    public String course;
+    public String location;
     private ViewPager viewPager;
     private TextView btnNext;
     private TextView btnBack;
@@ -53,7 +61,13 @@ public class AddCourseActivity extends FragmentActivity implements FragmentsCall
                         btnNext.setEnabled(false);
                         break;
                     case 0:
-                        //TODO : set new course to student
+                        AppGradeDatabase database = new AppGradeDatabase(AddCourseActivity.this);
+                        database.addCourseForCurrentUser(year, semester, course, new AppGradeDatabase.OnResultCallback() {
+                            @Override
+                            public void callback(Object data) {
+                                // TODO: Go to dashboard screen
+                            }
+                        });
                 }
             }
         });
@@ -82,6 +96,28 @@ public class AddCourseActivity extends FragmentActivity implements FragmentsCall
     @Override
     public void onBtnNextNeedToEnable() {
         this.btnNext.setEnabled(true);
+    }
+
+    @Override
+    public void getEditTextData(String editText, String value) {
+        switch (editText){
+            case "YEAR":
+                year = value;
+                break;
+            case "SEMESTER":
+                semester = value;
+                break;
+            case "CURRICULUM":
+                curriculum = value;
+                break;
+            case "COURSE":
+                course = value;
+                break;
+            case "LOCATION":
+                location = value;
+                break;
+
+        }
     }
 
     private class AddCourseViewPagerAdapter extends FragmentPagerAdapter{

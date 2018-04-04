@@ -6,4 +6,5 @@ package com.androidacademyhackaton.appgradehackaton;
 
 public interface FragmentsCallbacks {
     public void onBtnNextNeedToEnable();
+    public void getEditTextData(String editText , String value);
 }

@@ -43,4 +43,17 @@ public class Course extends Object{
         return title;
     }
 
+    public Semester getEnumSemester(String semester){
+        if(semester.equals(Semester.א.toString())){
+            return Semester.א;
+        }
+        if(semester.equals(Semester.ב.toString())){
+            return Semester.ב;
+        }
+        else{
+            return Semester.ג;
+        }
+
+    }
+
 }

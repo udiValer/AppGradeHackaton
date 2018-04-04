@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.androidacademyhackaton.appgradehackaton.Model.Course;
 import com.androidacademyhackaton.appgradehackaton.Model.Curriculum;
 import com.androidacademyhackaton.appgradehackaton.Model.GeoArea;
+import com.androidacademyhackaton.appgradehackaton.Model.MySharedPref;
 import com.androidacademyhackaton.appgradehackaton.Model.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -148,6 +149,18 @@ public class AppGradeDatabase{
                 onResultCallback.callback(null);
             }
         });
+    }
+
+    public void addCourseForCurrentUser(String year , String semester , String courseTitle , final OnResultCallback onResultCallback){
+        final String uid = mAuth.getCurrentUser().getUid();
+        if(uid == null){
+            onResultCallback.callback(null);
+        }
+        DatabaseReference refStudents = mDatabase.child("student-courses");
+        Course courseToAdd = new Course(courseTitle , Integer.valueOf(year) , new Course().getEnumSemester(semester));
+        refStudents.child(uid).setValue(courseToAdd);
+        onResultCallback.callback(courseToAdd);
+
     }
 
 }

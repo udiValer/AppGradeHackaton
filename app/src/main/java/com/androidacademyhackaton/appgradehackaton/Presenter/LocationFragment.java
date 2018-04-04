@@ -36,6 +36,7 @@ import java.util.List;
 public class LocationFragment extends Fragment {
 
     private FragmentsCallbacks mOnParentNeedToChange;
+    public AutoCompleteTextView location;
 
     public LocationFragment() {
         // Required empty public constructor
@@ -71,10 +72,10 @@ public class LocationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ArrayList<GeoArea> locations = new ArrayList<GeoArea>();
+        final ArrayList<GeoArea> locations = new ArrayList<GeoArea>();
         View view = inflater.inflate(R.layout.fragment_location , container , false);
 
-        final AutoCompleteTextView location = view.findViewById(R.id.locationEditText);
+        location = view.findViewById(R.id.locationEditText);
 
         AppGradeDatabase database = new AppGradeDatabase(getActivity());
         database.getGeoAreas(new AppGradeDatabase.OnResultCallback() {
@@ -95,6 +96,7 @@ public class LocationFragment extends Fragment {
                 location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        mOnParentNeedToChange.getEditTextData("LOCATION" , location.getText().toString());
                         mOnParentNeedToChange.onBtnNextNeedToEnable();
                         final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);

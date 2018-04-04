@@ -19,6 +19,8 @@ import com.androidacademyhackaton.appgradehackaton.R;
  */
 public class SemesterFragment extends Fragment {
 
+    public TextView txtYear;
+    public TextView txtSemester;
     private FragmentsCallbacks mOnParentNeedToChange;
     boolean yearSelected = false;
     boolean semesterSelected = false;
@@ -73,8 +75,8 @@ public class SemesterFragment extends Fragment {
         final ImageView centerCircleSemester = view.findViewById(R.id.fragmentSemesterCenterCircleSemester);
         final ImageView leftCircleSemester = view.findViewById(R.id.fragmentSemesterLeftCircleSemester);
 
-        final TextView txtYear = view.findViewById(R.id.fragmentSemesterYearEditText);
-        final TextView txtSemester = view.findViewById(R.id.fragmentSemesterSemesterEditText);
+        txtYear = view.findViewById(R.id.fragmentSemesterYearEditText);
+        txtSemester = view.findViewById(R.id.fragmentSemesterSemesterEditText);
 
         rightCircleYear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +141,8 @@ public class SemesterFragment extends Fragment {
         }
 
         if(semesterSelected && yearSelected){
+            mOnParentNeedToChange.getEditTextData("YEAR" , txtYear.getText().toString());
+            mOnParentNeedToChange.getEditTextData("SEMESTER" , txtSemester.getText().toString());
             mOnParentNeedToChange.onBtnNextNeedToEnable();
         }
     }

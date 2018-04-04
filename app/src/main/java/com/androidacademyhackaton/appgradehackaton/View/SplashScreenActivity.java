@@ -23,6 +23,8 @@ public class SplashScreenActivity extends Activity{
         setContentView(R.layout.activity_splashscreen_layout);
 
         MySharedPref mySharedPref = new MySharedPref((getApplicationContext()));
+        //mySharedPref.setEmail(""); // TODO: Remove comment for debug new user
+        //mySharedPref.setPassword("");
         if(!(mySharedPref.getEmail().equals(""))){
             AppGradeDatabase database = new AppGradeDatabase(SplashScreenActivity.this);
             database.signIn(mySharedPref.getEmail(), mySharedPref.getPassword() , new AppGradeDatabase.OnResultCallback() {
@@ -33,7 +35,7 @@ public class SplashScreenActivity extends Activity{
             });
         }
         else {
-            startActivity(new Intent(SplashScreenActivity.this , AddCourseActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this , SignUpActivity.class));
         }
     }
 

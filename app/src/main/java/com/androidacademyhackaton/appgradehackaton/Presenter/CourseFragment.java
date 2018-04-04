@@ -82,7 +82,7 @@ public class CourseFragment extends Fragment {
 
         spinnerForCurriculum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(final AdapterView<?> adapterView, View view, int i, long l) {
                 database.getRelevantCourses(new AppGradeDatabase.OnResultCallback() {
                     @Override
                     public void callback(Object data) {
@@ -91,6 +91,8 @@ public class CourseFragment extends Fragment {
                         ArrayAdapter<Course> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item , relevantCourses);
                         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                         spinnerForCourses.setAdapter(adapter);
+                        mOnParentNeedToChange.getEditTextData("CURRICULUM" , ((Curriculum)adapterView.getSelectedItem()).getTitle());
+                        mOnParentNeedToChange.getEditTextData("COURSE" , spinnerForCourses.getSelectedItem().toString());
                         mOnParentNeedToChange.onBtnNextNeedToEnable();
                     }
                 } , (Curriculum)adapterView.getSelectedItem());
